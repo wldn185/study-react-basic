@@ -1,52 +1,39 @@
+import { useState } from "react";
 import "./App.css";
-
-// Myheader 컴포넌트
-function Myheader() {
-  return (
-    <header>
-      <h1 className="logo">프론트엔드 개발자</h1>
-      <p>기본적인 html, css, javascript부터 학습합니다.</p>
-    </header>
-  );
-}
-
-// Nav 컴포넌트
-function Nav() {
-  return (
-    <nav>
-      <ul>
-        <li>
-          <a href="">UI/UX 개발</a>
-        </li>
-        <li>
-          <a href="">재사용이 가능한 UI 개발</a>
-        </li>
-        <li>
-          <a href="">애니메이션 구현</a>
-        </li>
-      </ul>
-    </nav>
-  );
-}
-
-// MyArticle 컴포넌트
-function MyArticle() {
-  return (
-    <section>
-      <article>
-        <h2>HTML</h2>
-        <p>Hypertext Markup Language</p>
-      </article>
-    </section>
-  );
-}
+import Myheader from "./components/Myheader.jsx";
+import MyArticle from "./components/Myheader.jsx";
+import Nav from "./components/Nav.jsx";
 
 function App() {
+  const [subject, setSubject] = useState({
+    title: "프론트엔드 개발자",
+    desc: "기본적인 html, css, javascript부터 학습합니다.",
+  });
+  const [content, setContent] = useState([
+    {
+      id: "1",
+      title: "UI/UX 개발",
+      desc: "사용자 경험을 고려한 직관적이고 반응성 높은 화면 구성",
+    },
+    {
+      id: "2",
+      title: "재사용이 가능한  UI 개발",
+      desc: "컴포넌트 기반으로 동일한 UI를 효율적으로 재사용 가능",
+    },
+    {
+      id: "3",
+      title: "애니메이션 구현",
+      desc: "상태 변화에 따른 자연스럽고 동적인 화면 효과 구현",
+    },
+  ]);
   return (
     <>
-      <Myheader />
-      <Nav />
-      <MyArticle />
+      <Myheader title={subject.title} desc={subject.desc} />
+      <Nav data={content} />
+      <MyArticle
+        title="UI/UX 개발"
+        desc="사용자 경험을 고려한 직관적이고 반응성 높은 화면 구성"
+      />
     </>
   );
 }
